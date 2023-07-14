@@ -1,6 +1,7 @@
 package com.lyx.gulimallproduct.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,20 @@ import com.lyx.common.utils.R;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
+
+
+    /**
+     * 查出所有分类以树形结构
+     * @return
+     */
+    @RequestMapping("/treeList")
+    //@RequiresPermissions("gulimallproduct:category:list")
+    public R treeList(){
+        List<CategoryEntity> categories = categoryService.listWithTree();
+        return R.ok().put("data",categories);
+
+    }
+
 
     /**
      * 列表
@@ -75,14 +90,22 @@ public class CategoryController {
         return R.ok();
     }
 
+
+    @RequestMapping("/update/sort")
+    //@RequiresPermissions("product:category:update")
+    public R updateSort(@RequestBody CategoryEntity[] category){
+        categoryService.updateBatchById(Arrays.asList(category));
+        return R.ok();
+    }
+
     /**
      * 删除
      */
     @RequestMapping("/delete")
     //@RequiresPermissions("gulimallproduct:category:delete")
     public R delete(@RequestBody Long[] catIds){
-		categoryService.removeByIds(Arrays.asList(catIds));
-
+		//categoryService.removeByIds(Arrays.asList(catIds));
+        categoryService.removeMenuByIds(Arrays.asList(catIds));
         return R.ok();
     }
 
