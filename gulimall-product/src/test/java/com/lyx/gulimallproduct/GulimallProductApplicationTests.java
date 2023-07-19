@@ -1,6 +1,5 @@
 package com.lyx.gulimallproduct;
 
-import com.lyx.gulimallproduct.entity.BrandEntity;
 import com.lyx.gulimallproduct.service.BrandService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,20 +7,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.annotation.Resource;
+
+import java.io.File;
+
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-class GulimallProductApplicationTests {
+public class GulimallProductApplicationTests {
 
     @Autowired
     BrandService brandService;
 
     @Test
-    void contextLoads() {
-        BrandEntity brand = new BrandEntity();
-        brand.setDescript("保存成功");
-        brandService.save(brand);
+    public void contextLoads() {
+
+
+
+//        B2StorageClient client = B2StorageClientFactory
+//                .createDefaultFactory()
+//                .create("", "", USER_AGENT);
+//
+//        final B2ListFileVersionsRequest request = B2ListFileVersionsRequest
+//                .builder("24e9647723cb568c8b930415")
+//                .build();
+//        for (B2FileVersion version : client.fileVersions(request)) {
+//            System.out.println("fileVersion: " + version);
+//        }
+//        String extension = file.getName().split(".")[1];
+//
+//        B2FileContentSource build = B2FileContentSource.build(file);
+//        B2UploadFileRequest.Builder builder = B2UploadFileRequest.builder("24e9647723cb568c8b930415", "b2Oss", "txt", build);
+//        client.uploadSmallFile(builder.build());
+
+
+//        String downloadByIdUrl = client.getDownloadByIdUrl("4_z24e9647723cb568c8b930415_f116a36b6e24c8157_d20230715_m061434_c004_v0402015_t0003_u01689401674294");
+//        System.out.println("downloadByIdUrl = " + downloadByIdUrl);
 
     }
 

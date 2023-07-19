@@ -1,0 +1,6 @@
+
+  server:
+    port: 3000
+  spring:
+    application:
+      name: gulimall-third-party

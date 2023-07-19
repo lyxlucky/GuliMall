@@ -2,8 +2,12 @@ package com.lyx.gulimallproduct.controller;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import com.lyx.common.valid.AddGroup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +19,7 @@ import com.lyx.gulimallproduct.service.BrandService;
 import com.lyx.common.utils.PageUtils;
 import com.lyx.common.utils.R;
 
+import javax.validation.Valid;
 
 
 /**
@@ -58,7 +63,7 @@ public class BrandController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("gulimallproduct:brand:save")
-    public R save(@RequestBody BrandEntity brand){
+    public R save(@RequestBody @Validated(AddGroup.class) BrandEntity brand){
 		brandService.save(brand);
 
         return R.ok();
