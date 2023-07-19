@@ -82,7 +82,7 @@ export default {
     },
     getCategorys(){
       this.$http({
-        url: this.$http.adornUrl("/product/category/list/tree"),
+        url: this.$http.adornUrl("/gulimallproduct/category/treeList"),
         method: "get"
       }).then(({ data }) => {
         this.categorys = data.data;
@@ -96,7 +96,7 @@ export default {
         if (this.dataForm.attrGroupId) {
           this.$http({
             url: this.$http.adornUrl(
-              `/product/attrgroup/info/${this.dataForm.attrGroupId}`
+              `/gulimallproduct/attrgroup/info/${this.dataForm.attrGroupId}`
             ),
             method: "get",
             params: this.$http.adornParams()
@@ -120,7 +120,7 @@ export default {
         if (valid) {
           this.$http({
             url: this.$http.adornUrl(
-              `/product/attrgroup/${
+              `/gulimallproduct/attrgroup/${
                 !this.dataForm.attrGroupId ? "save" : "update"
               }`
             ),
@@ -131,7 +131,7 @@ export default {
               sort: this.dataForm.sort,
               descript: this.dataForm.descript,
               icon: this.dataForm.icon,
-              catelogId: this.catelogPath[this.catelogPath.length-1]
+              catelogId: this.catelogPath[this.catelogPath.length - 1]
             })
           }).then(({ data }) => {
             if (data && data.code === 0) {
