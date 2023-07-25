@@ -20,12 +20,12 @@ import com.lyx.common.utils.R;
 /**
  * 积分变化历史记录
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 15:05:53
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-08 09:47:05
  */
 @RestController
-@RequestMapping("gulimallmember/integrationchangehistory")
+@RequestMapping("member/integrationchangehistory")
 public class IntegrationChangeHistoryController {
     @Autowired
     private IntegrationChangeHistoryService integrationChangeHistoryService;
@@ -34,7 +34,7 @@ public class IntegrationChangeHistoryController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallmember:integrationchangehistory:list")
+    //@RequiresPermissions("member:integrationchangehistory:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = integrationChangeHistoryService.queryPage(params);
 
@@ -46,7 +46,7 @@ public class IntegrationChangeHistoryController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("gulimallmember:integrationchangehistory:info")
+    //@RequiresPermissions("member:integrationchangehistory:info")
     public R info(@PathVariable("id") Long id){
 		IntegrationChangeHistoryEntity integrationChangeHistory = integrationChangeHistoryService.getById(id);
 
@@ -57,7 +57,7 @@ public class IntegrationChangeHistoryController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallmember:integrationchangehistory:save")
+    //@RequiresPermissions("member:integrationchangehistory:save")
     public R save(@RequestBody IntegrationChangeHistoryEntity integrationChangeHistory){
 		integrationChangeHistoryService.save(integrationChangeHistory);
 
@@ -68,7 +68,7 @@ public class IntegrationChangeHistoryController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallmember:integrationchangehistory:update")
+    //@RequiresPermissions("member:integrationchangehistory:update")
     public R update(@RequestBody IntegrationChangeHistoryEntity integrationChangeHistory){
 		integrationChangeHistoryService.updateById(integrationChangeHistory);
 
@@ -79,7 +79,7 @@ public class IntegrationChangeHistoryController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallmember:integrationchangehistory:delete")
+    //@RequiresPermissions("member:integrationchangehistory:delete")
     public R delete(@RequestBody Long[] ids){
 		integrationChangeHistoryService.removeByIds(Arrays.asList(ids));
 

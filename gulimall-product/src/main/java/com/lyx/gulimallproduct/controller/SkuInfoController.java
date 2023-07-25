@@ -20,9 +20,9 @@ import com.lyx.common.utils.R;
 /**
  * sku信息
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 13:56:06
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-01 22:50:32
  */
 @RestController
 @RequestMapping("gulimallproduct/skuinfo")
@@ -34,9 +34,9 @@ public class SkuInfoController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallproduct:skuinfo:list")
+    //@RequiresPermissions("product:skuinfo:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = skuInfoService.queryPage(params);
+        PageUtils page = skuInfoService.queryPageByCondition(params);
 
         return R.ok().put("page", page);
     }
@@ -46,7 +46,7 @@ public class SkuInfoController {
      * 信息
      */
     @RequestMapping("/info/{skuId}")
-    //@RequiresPermissions("gulimallproduct:skuinfo:info")
+    //@RequiresPermissions("product:skuinfo:info")
     public R info(@PathVariable("skuId") Long skuId){
 		SkuInfoEntity skuInfo = skuInfoService.getById(skuId);
 
@@ -57,7 +57,7 @@ public class SkuInfoController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallproduct:skuinfo:save")
+    //@RequiresPermissions("product:skuinfo:save")
     public R save(@RequestBody SkuInfoEntity skuInfo){
 		skuInfoService.save(skuInfo);
 
@@ -68,7 +68,7 @@ public class SkuInfoController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallproduct:skuinfo:update")
+    //@RequiresPermissions("product:skuinfo:update")
     public R update(@RequestBody SkuInfoEntity skuInfo){
 		skuInfoService.updateById(skuInfo);
 
@@ -79,7 +79,7 @@ public class SkuInfoController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallproduct:skuinfo:delete")
+    //@RequiresPermissions("product:skuinfo:delete")
     public R delete(@RequestBody Long[] skuIds){
 		skuInfoService.removeByIds(Arrays.asList(skuIds));
 

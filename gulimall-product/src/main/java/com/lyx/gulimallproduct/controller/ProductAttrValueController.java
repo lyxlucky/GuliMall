@@ -20,9 +20,9 @@ import com.lyx.common.utils.R;
 /**
  * spu属性值
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 13:56:06
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-01 22:50:32
  */
 @RestController
 @RequestMapping("gulimallproduct/productattrvalue")
@@ -34,7 +34,7 @@ public class ProductAttrValueController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallproduct:productattrvalue:list")
+    //@RequiresPermissions("product:productattrvalue:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = productAttrValueService.queryPage(params);
 
@@ -46,7 +46,7 @@ public class ProductAttrValueController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("gulimallproduct:productattrvalue:info")
+    //@RequiresPermissions("product:productattrvalue:info")
     public R info(@PathVariable("id") Long id){
 		ProductAttrValueEntity productAttrValue = productAttrValueService.getById(id);
 
@@ -57,7 +57,7 @@ public class ProductAttrValueController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallproduct:productattrvalue:save")
+    //@RequiresPermissions("product:productattrvalue:save")
     public R save(@RequestBody ProductAttrValueEntity productAttrValue){
 		productAttrValueService.save(productAttrValue);
 
@@ -68,7 +68,7 @@ public class ProductAttrValueController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallproduct:productattrvalue:update")
+    //@RequiresPermissions("product:productattrvalue:update")
     public R update(@RequestBody ProductAttrValueEntity productAttrValue){
 		productAttrValueService.updateById(productAttrValue);
 
@@ -79,7 +79,7 @@ public class ProductAttrValueController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallproduct:productattrvalue:delete")
+    //@RequiresPermissions("product:productattrvalue:delete")
     public R delete(@RequestBody Long[] ids){
 		productAttrValueService.removeByIds(Arrays.asList(ids));
 

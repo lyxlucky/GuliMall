@@ -20,12 +20,12 @@ import com.lyx.common.utils.R;
 /**
  * 成长值变化历史记录
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 15:05:53
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-08 09:47:05
  */
 @RestController
-@RequestMapping("gulimallmember/growthchangehistory")
+@RequestMapping("member/growthchangehistory")
 public class GrowthChangeHistoryController {
     @Autowired
     private GrowthChangeHistoryService growthChangeHistoryService;
@@ -34,7 +34,7 @@ public class GrowthChangeHistoryController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallmember:growthchangehistory:list")
+    //@RequiresPermissions("member:growthchangehistory:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = growthChangeHistoryService.queryPage(params);
 
@@ -46,7 +46,7 @@ public class GrowthChangeHistoryController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("gulimallmember:growthchangehistory:info")
+    //@RequiresPermissions("member:growthchangehistory:info")
     public R info(@PathVariable("id") Long id){
 		GrowthChangeHistoryEntity growthChangeHistory = growthChangeHistoryService.getById(id);
 
@@ -57,7 +57,7 @@ public class GrowthChangeHistoryController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallmember:growthchangehistory:save")
+    //@RequiresPermissions("member:growthchangehistory:save")
     public R save(@RequestBody GrowthChangeHistoryEntity growthChangeHistory){
 		growthChangeHistoryService.save(growthChangeHistory);
 
@@ -68,7 +68,7 @@ public class GrowthChangeHistoryController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallmember:growthchangehistory:update")
+    //@RequiresPermissions("member:growthchangehistory:update")
     public R update(@RequestBody GrowthChangeHistoryEntity growthChangeHistory){
 		growthChangeHistoryService.updateById(growthChangeHistory);
 
@@ -79,7 +79,7 @@ public class GrowthChangeHistoryController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallmember:growthchangehistory:delete")
+    //@RequiresPermissions("member:growthchangehistory:delete")
     public R delete(@RequestBody Long[] ids){
 		growthChangeHistoryService.removeByIds(Arrays.asList(ids));
 

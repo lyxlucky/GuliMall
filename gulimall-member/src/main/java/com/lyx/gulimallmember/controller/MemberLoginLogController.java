@@ -20,12 +20,12 @@ import com.lyx.common.utils.R;
 /**
  * 会员登录记录
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 15:05:53
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-08 09:47:05
  */
 @RestController
-@RequestMapping("gulimallmember/memberloginlog")
+@RequestMapping("member/memberloginlog")
 public class MemberLoginLogController {
     @Autowired
     private MemberLoginLogService memberLoginLogService;
@@ -34,7 +34,7 @@ public class MemberLoginLogController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallmember:memberloginlog:list")
+    //@RequiresPermissions("member:memberloginlog:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = memberLoginLogService.queryPage(params);
 
@@ -46,7 +46,7 @@ public class MemberLoginLogController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("gulimallmember:memberloginlog:info")
+    //@RequiresPermissions("member:memberloginlog:info")
     public R info(@PathVariable("id") Long id){
 		MemberLoginLogEntity memberLoginLog = memberLoginLogService.getById(id);
 
@@ -57,7 +57,7 @@ public class MemberLoginLogController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallmember:memberloginlog:save")
+    //@RequiresPermissions("member:memberloginlog:save")
     public R save(@RequestBody MemberLoginLogEntity memberLoginLog){
 		memberLoginLogService.save(memberLoginLog);
 
@@ -68,7 +68,7 @@ public class MemberLoginLogController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallmember:memberloginlog:update")
+    //@RequiresPermissions("member:memberloginlog:update")
     public R update(@RequestBody MemberLoginLogEntity memberLoginLog){
 		memberLoginLogService.updateById(memberLoginLog);
 
@@ -79,7 +79,7 @@ public class MemberLoginLogController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallmember:memberloginlog:delete")
+    //@RequiresPermissions("member:memberloginlog:delete")
     public R delete(@RequestBody Long[] ids){
 		memberLoginLogService.removeByIds(Arrays.asList(ids));
 

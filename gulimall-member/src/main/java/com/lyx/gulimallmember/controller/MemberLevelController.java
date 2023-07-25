@@ -20,12 +20,12 @@ import com.lyx.common.utils.R;
 /**
  * 会员等级
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 15:05:53
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-08 09:47:05
  */
 @RestController
-@RequestMapping("gulimallmember/memberlevel")
+@RequestMapping("member/memberlevel")
 public class MemberLevelController {
     @Autowired
     private MemberLevelService memberLevelService;
@@ -34,7 +34,7 @@ public class MemberLevelController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallmember:memberlevel:list")
+    //@RequiresPermissions("member:memberlevel:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = memberLevelService.queryPage(params);
 
@@ -46,7 +46,7 @@ public class MemberLevelController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("gulimallmember:memberlevel:info")
+    //@RequiresPermissions("member:memberlevel:info")
     public R info(@PathVariable("id") Long id){
 		MemberLevelEntity memberLevel = memberLevelService.getById(id);
 
@@ -57,7 +57,7 @@ public class MemberLevelController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallmember:memberlevel:save")
+    //@RequiresPermissions("member:memberlevel:save")
     public R save(@RequestBody MemberLevelEntity memberLevel){
 		memberLevelService.save(memberLevel);
 
@@ -68,7 +68,7 @@ public class MemberLevelController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallmember:memberlevel:update")
+    //@RequiresPermissions("member:memberlevel:update")
     public R update(@RequestBody MemberLevelEntity memberLevel){
 		memberLevelService.updateById(memberLevel);
 
@@ -79,7 +79,7 @@ public class MemberLevelController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallmember:memberlevel:delete")
+    //@RequiresPermissions("member:memberlevel:delete")
     public R delete(@RequestBody Long[] ids){
 		memberLevelService.removeByIds(Arrays.asList(ids));
 

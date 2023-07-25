@@ -20,12 +20,12 @@ import com.lyx.common.utils.R;
 /**
  * 会员收货地址
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 15:05:53
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-08 09:47:05
  */
 @RestController
-@RequestMapping("gulimallmember/memberreceiveaddress")
+@RequestMapping("member/memberreceiveaddress")
 public class MemberReceiveAddressController {
     @Autowired
     private MemberReceiveAddressService memberReceiveAddressService;
@@ -34,7 +34,7 @@ public class MemberReceiveAddressController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallmember:memberreceiveaddress:list")
+    //@RequiresPermissions("member:memberreceiveaddress:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = memberReceiveAddressService.queryPage(params);
 
@@ -46,7 +46,7 @@ public class MemberReceiveAddressController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("gulimallmember:memberreceiveaddress:info")
+    //@RequiresPermissions("member:memberreceiveaddress:info")
     public R info(@PathVariable("id") Long id){
 		MemberReceiveAddressEntity memberReceiveAddress = memberReceiveAddressService.getById(id);
 
@@ -57,7 +57,7 @@ public class MemberReceiveAddressController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallmember:memberreceiveaddress:save")
+    //@RequiresPermissions("member:memberreceiveaddress:save")
     public R save(@RequestBody MemberReceiveAddressEntity memberReceiveAddress){
 		memberReceiveAddressService.save(memberReceiveAddress);
 
@@ -68,7 +68,7 @@ public class MemberReceiveAddressController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallmember:memberreceiveaddress:update")
+    //@RequiresPermissions("member:memberreceiveaddress:update")
     public R update(@RequestBody MemberReceiveAddressEntity memberReceiveAddress){
 		memberReceiveAddressService.updateById(memberReceiveAddress);
 
@@ -79,7 +79,7 @@ public class MemberReceiveAddressController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallmember:memberreceiveaddress:delete")
+    //@RequiresPermissions("member:memberreceiveaddress:delete")
     public R delete(@RequestBody Long[] ids){
 		memberReceiveAddressService.removeByIds(Arrays.asList(ids));
 

@@ -13,12 +13,10 @@
             <el-button @click="getDataList()">查询</el-button>
             <el-button type="success" @click="getAllDataList()">查询全部</el-button>
             <el-button
-              v-if="isAuth('product:attr:save')"
               type="primary"
               @click="addOrUpdateHandle()"
             >新增</el-button>
             <el-button
-              v-if="isAuth('product:attr:delete')"
               type="danger"
               @click="deleteHandle()"
               :disabled="dataListSelections.length <= 0"
@@ -168,7 +166,7 @@ export default {
       this.dataListLoading = true;
       let type = this.attrtype == 0 ? "sale" : "base";
       this.$http({
-        url: this.$http.adornUrl(`/product/attr/${type}/list/${this.catId}`),
+        url: this.$http.adornUrl(`/gulimallproduct/attr/${type}/list/${this.catId}`),
         method: "get",
         params: this.$http.adornParams({
           page: this.pageIndex,
@@ -225,7 +223,7 @@ export default {
         }
       ).then(() => {
         this.$http({
-          url: this.$http.adornUrl("/product/attr/delete"),
+          url: this.$http.adornUrl("/gulimallproduct/attr/delete"),
           method: "post",
           data: this.$http.adornData(ids, false)
         }).then(({ data }) => {

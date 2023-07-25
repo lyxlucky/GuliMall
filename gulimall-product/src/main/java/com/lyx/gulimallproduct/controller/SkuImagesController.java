@@ -20,9 +20,9 @@ import com.lyx.common.utils.R;
 /**
  * sku图片
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 13:56:06
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-01 22:50:32
  */
 @RestController
 @RequestMapping("gulimallproduct/skuimages")
@@ -34,7 +34,7 @@ public class SkuImagesController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallproduct:skuimages:list")
+    //@RequiresPermissions("product:skuimages:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = skuImagesService.queryPage(params);
 
@@ -46,7 +46,7 @@ public class SkuImagesController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("gulimallproduct:skuimages:info")
+    //@RequiresPermissions("product:skuimages:info")
     public R info(@PathVariable("id") Long id){
 		SkuImagesEntity skuImages = skuImagesService.getById(id);
 
@@ -57,7 +57,7 @@ public class SkuImagesController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallproduct:skuimages:save")
+    //@RequiresPermissions("product:skuimages:save")
     public R save(@RequestBody SkuImagesEntity skuImages){
 		skuImagesService.save(skuImages);
 
@@ -68,7 +68,7 @@ public class SkuImagesController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallproduct:skuimages:update")
+    //@RequiresPermissions("product:skuimages:update")
     public R update(@RequestBody SkuImagesEntity skuImages){
 		skuImagesService.updateById(skuImages);
 
@@ -79,7 +79,7 @@ public class SkuImagesController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallproduct:skuimages:delete")
+    //@RequiresPermissions("product:skuimages:delete")
     public R delete(@RequestBody Long[] ids){
 		skuImagesService.removeByIds(Arrays.asList(ids));
 

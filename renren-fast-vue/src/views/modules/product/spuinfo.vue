@@ -76,7 +76,7 @@ export default {
   methods: {
     productUp(id) {
       this.$http({
-        url: this.$http.adornUrl("/product/spuinfo/" + id + "/up"),
+        url: this.$http.adornUrl("/gulimallproduct/spuinfo/" + id + "/up"),
         method: "post"
       }).then(({ data }) => {
         if (data && data.code === 0) {
@@ -96,7 +96,7 @@ export default {
     attrUpdateShow(row) {
       console.log(row);
       this.$router.push({
-        path: "/product-attrupdate",
+        path: "/gulimallproduct-attrupdate",
         query: { spuId: row.id, catalogId: row.catalogId }
       });
     },
@@ -109,7 +109,7 @@ export default {
         limit: this.pageSize
       });
       this.$http({
-        url: this.$http.adornUrl("/product/spuinfo/list"),
+        url: this.$http.adornUrl("/gulimallproduct/spuinfo/list"),
         method: "get",
         params: this.$http.adornParams(param)
       }).then(({ data }) => {

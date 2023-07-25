@@ -20,12 +20,12 @@ import com.lyx.common.utils.R;
 /**
  * 会员统计信息
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 15:05:53
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-08 09:47:05
  */
 @RestController
-@RequestMapping("gulimallmember/memberstatisticsinfo")
+@RequestMapping("member/memberstatisticsinfo")
 public class MemberStatisticsInfoController {
     @Autowired
     private MemberStatisticsInfoService memberStatisticsInfoService;
@@ -34,7 +34,7 @@ public class MemberStatisticsInfoController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallmember:memberstatisticsinfo:list")
+    //@RequiresPermissions("member:memberstatisticsinfo:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = memberStatisticsInfoService.queryPage(params);
 
@@ -46,7 +46,7 @@ public class MemberStatisticsInfoController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("gulimallmember:memberstatisticsinfo:info")
+    //@RequiresPermissions("member:memberstatisticsinfo:info")
     public R info(@PathVariable("id") Long id){
 		MemberStatisticsInfoEntity memberStatisticsInfo = memberStatisticsInfoService.getById(id);
 
@@ -57,7 +57,7 @@ public class MemberStatisticsInfoController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallmember:memberstatisticsinfo:save")
+    //@RequiresPermissions("member:memberstatisticsinfo:save")
     public R save(@RequestBody MemberStatisticsInfoEntity memberStatisticsInfo){
 		memberStatisticsInfoService.save(memberStatisticsInfo);
 
@@ -68,7 +68,7 @@ public class MemberStatisticsInfoController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallmember:memberstatisticsinfo:update")
+    //@RequiresPermissions("member:memberstatisticsinfo:update")
     public R update(@RequestBody MemberStatisticsInfoEntity memberStatisticsInfo){
 		memberStatisticsInfoService.updateById(memberStatisticsInfo);
 
@@ -79,7 +79,7 @@ public class MemberStatisticsInfoController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallmember:memberstatisticsinfo:delete")
+    //@RequiresPermissions("member:memberstatisticsinfo:delete")
     public R delete(@RequestBody Long[] ids){
 		memberStatisticsInfoService.removeByIds(Arrays.asList(ids));
 

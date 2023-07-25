@@ -1,12 +1,14 @@
 package com.lyx.gulimallproduct.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import com.lyx.common.valid.AddGroup;
+import com.lyx.common.valid.UpdateGroup;
+import com.lyx.common.valid.UpdateStatusGroup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,9 +27,9 @@ import javax.validation.Valid;
 /**
  * 品牌
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 13:56:06
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-01 22:50:32
  */
 @RestController
 @RequestMapping("gulimallproduct/brand")
@@ -39,7 +41,7 @@ public class BrandController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallproduct:brand:list")
+    //@RequiresPermissions("product:brand:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = brandService.queryPage(params);
 
@@ -51,7 +53,7 @@ public class BrandController {
      * 信息
      */
     @RequestMapping("/info/{brandId}")
-    //@RequiresPermissions("gulimallproduct:brand:info")
+    //@RequiresPermissions("product:brand:info")
     public R info(@PathVariable("brandId") Long brandId){
 		BrandEntity brand = brandService.getById(brandId);
 
@@ -62,9 +64,26 @@ public class BrandController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallproduct:brand:save")
-    public R save(@RequestBody @Validated(AddGroup.class) BrandEntity brand){
-		brandService.save(brand);
+    //@RequiresPermissions("product:brand:save")
+    public R save(@Validated({AddGroup.class}) @RequestBody BrandEntity brand/*,BindingResult result*/){
+//        if(result.hasErrors()){
+//            Map<String,String> map = new HashMap<>();
+//            //1、获取校验的错误结果
+//            result.getFieldErrors().forEach((item)->{
+//                //FieldError 获取到错误提示
+//                String message = item.getDefaultMessage();
+//                //获取错误的属性的名字
+//                String field = item.getField();
+//                map.put(field,message);
+//            });
+//
+//            return R.error(400,"提交的数据不合法").put("data",map);
+//        }else {
+//
+//        }
+
+        brandService.save(brand);
+
 
         return R.ok();
     }
@@ -73,9 +92,19 @@ public class BrandController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallproduct:brand:update")
-    public R update(@RequestBody BrandEntity brand){
-		brandService.updateById(brand);
+    //@RequiresPermissions("product:brand:update")
+    public R update(@Validated(UpdateGroup.class) @RequestBody BrandEntity brand){
+		brandService.updateDetail(brand);
+
+        return R.ok();
+    }
+    /**
+     * 修改状态
+     */
+    @RequestMapping("/update/status")
+    //@RequiresPermissions("product:brand:update")
+    public R updateStatus(@Validated(UpdateStatusGroup.class) @RequestBody BrandEntity brand){
+        brandService.updateById(brand);
 
         return R.ok();
     }
@@ -84,7 +113,7 @@ public class BrandController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallproduct:brand:delete")
+    //@RequiresPermissions("product:brand:delete")
     public R delete(@RequestBody Long[] brandIds){
 		brandService.removeByIds(Arrays.asList(brandIds));
 

@@ -10,9 +10,9 @@ import lombok.Data;
 /**
  * 成长值变化历史记录
  * 
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 15:05:53
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-08 09:47:05
  */
 @Data
 @TableName("ums_growth_change_history")

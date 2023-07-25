@@ -20,12 +20,12 @@ import com.lyx.common.utils.R;
 /**
  * 库存工作单
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 15:12:24
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-08 09:59:40
  */
 @RestController
-@RequestMapping("gulimallware/wareordertaskdetail")
+@RequestMapping("ware/wareordertaskdetail")
 public class WareOrderTaskDetailController {
     @Autowired
     private WareOrderTaskDetailService wareOrderTaskDetailService;
@@ -34,7 +34,7 @@ public class WareOrderTaskDetailController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallware:wareordertaskdetail:list")
+    //@RequiresPermissions("ware:wareordertaskdetail:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = wareOrderTaskDetailService.queryPage(params);
 
@@ -46,7 +46,7 @@ public class WareOrderTaskDetailController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("gulimallware:wareordertaskdetail:info")
+    //@RequiresPermissions("ware:wareordertaskdetail:info")
     public R info(@PathVariable("id") Long id){
 		WareOrderTaskDetailEntity wareOrderTaskDetail = wareOrderTaskDetailService.getById(id);
 
@@ -57,7 +57,7 @@ public class WareOrderTaskDetailController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallware:wareordertaskdetail:save")
+    //@RequiresPermissions("ware:wareordertaskdetail:save")
     public R save(@RequestBody WareOrderTaskDetailEntity wareOrderTaskDetail){
 		wareOrderTaskDetailService.save(wareOrderTaskDetail);
 
@@ -68,7 +68,7 @@ public class WareOrderTaskDetailController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallware:wareordertaskdetail:update")
+    //@RequiresPermissions("ware:wareordertaskdetail:update")
     public R update(@RequestBody WareOrderTaskDetailEntity wareOrderTaskDetail){
 		wareOrderTaskDetailService.updateById(wareOrderTaskDetail);
 
@@ -79,7 +79,7 @@ public class WareOrderTaskDetailController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallware:wareordertaskdetail:delete")
+    //@RequiresPermissions("ware:wareordertaskdetail:delete")
     public R delete(@RequestBody Long[] ids){
 		wareOrderTaskDetailService.removeByIds(Arrays.asList(ids));
 

@@ -20,9 +20,9 @@ import com.lyx.common.utils.R;
 /**
  * 商品评价回复关系
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 13:56:06
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-01 22:50:32
  */
 @RestController
 @RequestMapping("gulimallproduct/commentreplay")
@@ -34,7 +34,7 @@ public class CommentReplayController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallproduct:commentreplay:list")
+    //@RequiresPermissions("product:commentreplay:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = commentReplayService.queryPage(params);
 
@@ -46,7 +46,7 @@ public class CommentReplayController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("gulimallproduct:commentreplay:info")
+    //@RequiresPermissions("product:commentreplay:info")
     public R info(@PathVariable("id") Long id){
 		CommentReplayEntity commentReplay = commentReplayService.getById(id);
 
@@ -57,7 +57,7 @@ public class CommentReplayController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallproduct:commentreplay:save")
+    //@RequiresPermissions("product:commentreplay:save")
     public R save(@RequestBody CommentReplayEntity commentReplay){
 		commentReplayService.save(commentReplay);
 
@@ -68,7 +68,7 @@ public class CommentReplayController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallproduct:commentreplay:update")
+    //@RequiresPermissions("product:commentreplay:update")
     public R update(@RequestBody CommentReplayEntity commentReplay){
 		commentReplayService.updateById(commentReplay);
 
@@ -79,7 +79,7 @@ public class CommentReplayController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallproduct:commentreplay:delete")
+    //@RequiresPermissions("product:commentreplay:delete")
     public R delete(@RequestBody Long[] ids){
 		commentReplayService.removeByIds(Arrays.asList(ids));
 

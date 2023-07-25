@@ -189,7 +189,7 @@ export default {
         }
       ).then(() => {
         this.$http({
-          url: this.$http.adornUrl("/product/attrgroup/delete"),
+          url: this.$http.adornUrl("/gulimallproduct/attrgroup/delete"),
           method: "post",
           data: this.$http.adornData(ids, false)
         }).then(({ data }) => {

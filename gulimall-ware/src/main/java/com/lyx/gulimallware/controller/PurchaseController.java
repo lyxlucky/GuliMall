@@ -1,14 +1,14 @@
 package com.lyx.gulimallware.controller;
 
 import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
+import com.lyx.gulimallware.vo.MergeVo;
+import com.lyx.gulimallware.vo.PurchaseDoneVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.lyx.gulimallware.entity.PurchaseEntity;
 import com.lyx.gulimallware.service.PurchaseService;
@@ -20,21 +20,59 @@ import com.lyx.common.utils.R;
 /**
  * 采购信息
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 15:12:24
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-11-17 13:50:10
  */
 @RestController
-@RequestMapping("gulimallware/purchase")
+@RequestMapping("ware/purchase")
 public class PurchaseController {
     @Autowired
     private PurchaseService purchaseService;
+
+    ///ware/purchase/done
+    @PostMapping("/done")
+    public R finish(@RequestBody PurchaseDoneVo doneVo){
+
+        purchaseService.done(doneVo);
+
+        return R.ok();
+    }
+
+    /**
+     * 领取采购单
+     * @return
+     */
+    @PostMapping("/received")
+    public R received(@RequestBody List<Long> ids){
+
+        purchaseService.received(ids);
+
+        return R.ok();
+    }
+
+    ///ware/purchase/unreceive/list
+    ///ware/purchase/merge
+    @PostMapping("/merge")
+    public R merge(@RequestBody MergeVo mergeVo){
+
+        purchaseService.mergePurchase(mergeVo);
+        return R.ok();
+    }
+
+    @RequestMapping("/unreceive/list")
+    //@RequiresPermissions("ware:purchase:list")
+    public R unreceivelist(@RequestParam Map<String, Object> params){
+        PageUtils page = purchaseService.queryPageUnreceivePurchase(params);
+
+        return R.ok().put("page", page);
+    }
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallware:purchase:list")
+    //@RequiresPermissions("ware:purchase:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = purchaseService.queryPage(params);
 
@@ -46,7 +84,7 @@ public class PurchaseController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("gulimallware:purchase:info")
+    //@RequiresPermissions("ware:purchase:info")
     public R info(@PathVariable("id") Long id){
 		PurchaseEntity purchase = purchaseService.getById(id);
 
@@ -57,8 +95,10 @@ public class PurchaseController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallware:purchase:save")
+    //@RequiresPermissions("ware:purchase:save")
     public R save(@RequestBody PurchaseEntity purchase){
+        purchase.setUpdateTime(new Date());
+        purchase.setCreateTime(new Date());
 		purchaseService.save(purchase);
 
         return R.ok();
@@ -68,7 +108,7 @@ public class PurchaseController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallware:purchase:update")
+    //@RequiresPermissions("ware:purchase:update")
     public R update(@RequestBody PurchaseEntity purchase){
 		purchaseService.updateById(purchase);
 
@@ -79,7 +119,7 @@ public class PurchaseController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallware:purchase:delete")
+    //@RequiresPermissions("ware:purchase:delete")
     public R delete(@RequestBody Long[] ids){
 		purchaseService.removeByIds(Arrays.asList(ids));
 

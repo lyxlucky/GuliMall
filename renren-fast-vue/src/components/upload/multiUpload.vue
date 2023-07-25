@@ -22,6 +22,7 @@
 </template>
 <script>
 import { getUUID } from '@/utils'
+import { policy } from "./policy";
 export default {
   name: "multiUpload",
   props: {

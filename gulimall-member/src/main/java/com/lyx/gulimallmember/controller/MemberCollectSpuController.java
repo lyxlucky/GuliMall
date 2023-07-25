@@ -20,12 +20,12 @@ import com.lyx.common.utils.R;
 /**
  * 会员收藏的商品
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 15:05:53
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-08 09:47:05
  */
 @RestController
-@RequestMapping("gulimallmember/membercollectspu")
+@RequestMapping("member/membercollectspu")
 public class MemberCollectSpuController {
     @Autowired
     private MemberCollectSpuService memberCollectSpuService;
@@ -34,7 +34,7 @@ public class MemberCollectSpuController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallmember:membercollectspu:list")
+    //@RequiresPermissions("member:membercollectspu:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = memberCollectSpuService.queryPage(params);
 
@@ -46,7 +46,7 @@ public class MemberCollectSpuController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("gulimallmember:membercollectspu:info")
+    //@RequiresPermissions("member:membercollectspu:info")
     public R info(@PathVariable("id") Long id){
 		MemberCollectSpuEntity memberCollectSpu = memberCollectSpuService.getById(id);
 
@@ -57,7 +57,7 @@ public class MemberCollectSpuController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallmember:membercollectspu:save")
+    //@RequiresPermissions("member:membercollectspu:save")
     public R save(@RequestBody MemberCollectSpuEntity memberCollectSpu){
 		memberCollectSpuService.save(memberCollectSpu);
 
@@ -68,7 +68,7 @@ public class MemberCollectSpuController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallmember:membercollectspu:update")
+    //@RequiresPermissions("member:membercollectspu:update")
     public R update(@RequestBody MemberCollectSpuEntity memberCollectSpu){
 		memberCollectSpuService.updateById(memberCollectSpu);
 
@@ -79,7 +79,7 @@ public class MemberCollectSpuController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallmember:membercollectspu:delete")
+    //@RequiresPermissions("member:membercollectspu:delete")
     public R delete(@RequestBody Long[] ids){
 		memberCollectSpuService.removeByIds(Arrays.asList(ids));
 

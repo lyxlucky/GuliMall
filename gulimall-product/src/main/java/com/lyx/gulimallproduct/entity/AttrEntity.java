@@ -1,5 +1,6 @@
 package com.lyx.gulimallproduct.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -10,9 +11,9 @@ import lombok.Data;
 /**
  * 商品属性
  * 
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 13:48:13
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-01 21:08:49
  */
 @Data
 @TableName("pms_attr")
@@ -60,5 +61,8 @@ public class AttrEntity implements Serializable {
 	 * 快速展示【是否展示在介绍上；0-否 1-是】，在sku中仍然可以调整
 	 */
 	private Integer showDesc;
+
+//	@TableField(exist = false)
+//	private Long attrGroupId;
 
 }

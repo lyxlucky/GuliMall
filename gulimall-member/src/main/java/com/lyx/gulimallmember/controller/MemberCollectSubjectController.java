@@ -20,12 +20,12 @@ import com.lyx.common.utils.R;
 /**
  * 会员收藏的专题活动
  *
- * @author liao
- * @email 2414690715from36@gmail.com
- * @date 2023-07-13 15:05:53
+ * @author leifengyang
+ * @email leifengyang@gmail.com
+ * @date 2019-10-08 09:47:05
  */
 @RestController
-@RequestMapping("gulimallmember/membercollectsubject")
+@RequestMapping("member/membercollectsubject")
 public class MemberCollectSubjectController {
     @Autowired
     private MemberCollectSubjectService memberCollectSubjectService;
@@ -34,7 +34,7 @@ public class MemberCollectSubjectController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("gulimallmember:membercollectsubject:list")
+    //@RequiresPermissions("member:membercollectsubject:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = memberCollectSubjectService.queryPage(params);
 
@@ -46,7 +46,7 @@ public class MemberCollectSubjectController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("gulimallmember:membercollectsubject:info")
+    //@RequiresPermissions("member:membercollectsubject:info")
     public R info(@PathVariable("id") Long id){
 		MemberCollectSubjectEntity memberCollectSubject = memberCollectSubjectService.getById(id);
 
@@ -57,7 +57,7 @@ public class MemberCollectSubjectController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("gulimallmember:membercollectsubject:save")
+    //@RequiresPermissions("member:membercollectsubject:save")
     public R save(@RequestBody MemberCollectSubjectEntity memberCollectSubject){
 		memberCollectSubjectService.save(memberCollectSubject);
 
@@ -68,7 +68,7 @@ public class MemberCollectSubjectController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("gulimallmember:membercollectsubject:update")
+    //@RequiresPermissions("member:membercollectsubject:update")
     public R update(@RequestBody MemberCollectSubjectEntity memberCollectSubject){
 		memberCollectSubjectService.updateById(memberCollectSubject);
 
@@ -79,7 +79,7 @@ public class MemberCollectSubjectController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("gulimallmember:membercollectsubject:delete")
+    //@RequiresPermissions("member:membercollectsubject:delete")
     public R delete(@RequestBody Long[] ids){
 		memberCollectSubjectService.removeByIds(Arrays.asList(ids));
 
